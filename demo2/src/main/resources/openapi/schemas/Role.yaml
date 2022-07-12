@@ -1,0 +1,12 @@
+type: object
+required:
+  - id
+  - roleName
+properties:
+  id:
+    type: integer
+    description: Id
+    format: int64
+  roleName:
+    type: string
+    description: Role name

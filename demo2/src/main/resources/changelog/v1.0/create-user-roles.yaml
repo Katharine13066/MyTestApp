@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user-role
+      author: Ekaterina Gorshunova
+      changes:
+        - createTable:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: add-composite-primary-key
+      author: Ekaterina Gorshunova
+      changes:
+        - addPrimaryKey:
+            clustered: true
+            columnNames: user_id, role_id
+            constraintName: user_role_pk
+            schemaName: public
+            tableName: user_roles
+            validate: true
+  - changeSet:
+      id: addForeignKeyForUserRole1
+      author: Ekaterina Gorshunova
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: user_roles
+            baseColumnNames: user_id
+            baseTableSchemaName: public
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: user_id-pk-fk-constraint
+            referencedTableSchemaName: public
+            validate: true
+  - changeSet:
+      id: addForeignKeyForUserRole2
+      author: Ekaterina Gorshunova
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: user_roles
+            baseColumnNames: role_id
+            baseTableSchemaName: public
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedTableName: roles
+            referencedColumnNames: id
+            constraintName: role_id-pk-fk-constraint
+            referencedTableSchemaName: public
+            validate: true

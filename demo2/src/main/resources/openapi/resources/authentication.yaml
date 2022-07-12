@@ -1,0 +1,18 @@
+post:
+  tags:
+    - authentication
+  summary: Authentication Request
+  operationId: loginUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/AuthenticationRequest.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/AuthenticationResponse.yaml'

@@ -1,0 +1,56 @@
+get:
+  tags:
+    - users
+  summary: Get all users
+  operationId: findAllUsers
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/User.yaml'
+put:
+  tags:
+    - users
+  summary: Update user
+  operationId: updateUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/User.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+post:
+  tags:
+    - users
+  summary: Create new user
+  operationId: createUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/User.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+patch:
+  tags:
+    - users
+  summary: Patch method
+  operationId: patchUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/User.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK

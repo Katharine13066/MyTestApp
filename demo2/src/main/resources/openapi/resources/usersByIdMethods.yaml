@@ -1,0 +1,24 @@
+get:
+  tags:
+    - users
+  summary: Get user by id
+  operationId: findByIdUser
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/User.yaml'
+delete:
+  tags:
+    - users
+  summary: Delete user by id
+  operationId: deleteUserById
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK

@@ -1,0 +1,27 @@
+openapi: 3.0.1
+info:
+  title: Library Swagger Api
+  contact:
+    name: Ekaterina Gorshunova
+    email: ekaterina.gorshunova@intexsoft.by
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /users:
+    $ref: './resources/users.yaml'
+  /users/{id}:
+    $ref: './resources/usersByIdMethods.yaml'
+  /authentication:
+    $ref: './resources/authentication.yaml'
+components:
+  schemas:
+    UserDTO:
+      $ref: './schemas/User.yaml'
+    RoleDTO:
+      $ref: './schemas/Role.yaml'
+    AuthenticationRequestDTO:
+      $ref: './schemas/AuthenticationRequest.yaml'
+    AuthenticationResponseDTO:
+      $ref: './schemas/AuthenticationResponse.yaml'

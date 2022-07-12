@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/dcbl1qo829g535
+    username: koiiwdlkhhrkvb
+    password: 6a6375a36c4bfa247ba4b428df21ecda8fb6915aa36c741de1c812c589ab067b
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:changelog/db.changelog-master.yaml

@@ -1,0 +1,38 @@
+type: object
+required:
+  - id
+  - userName
+  - phoneNumber
+  - email
+  - birthday
+  - password
+  - status
+  - rolesDtoList
+properties:
+  id:
+    type: integer
+    description: Id
+    format: int64
+  userName:
+    type: string
+    description: User name
+  phoneNumber:
+    type: string
+    description: Phone number
+  email:
+    type: string
+    description: Email
+  birthday:
+    type: string
+    description: Birthday
+  password:
+    type: string
+    description: Password
+  status:
+    type: boolean
+    description: User status (is Active)
+  rolesDtoList:
+    type: array
+    description: Role(s)
+    items:
+      $ref: './Role.yaml'
