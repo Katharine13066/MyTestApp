@@ -1,0 +1,24 @@
+get:
+  tags:
+    - bookhistory
+  summary: Get bookHistory by id
+  operationId: findByIdBookHistory
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/BookHistory.yaml'
+delete:
+  tags:
+    - bookhistory
+  summary: Delete bookHistory by id
+  operationId: deleteBookHistoryById
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK

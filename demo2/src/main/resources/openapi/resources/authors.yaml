@@ -1,0 +1,56 @@
+get:
+  tags:
+    - authors
+  summary: Get all authors
+  operationId: findAllAuthors
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/Author.yaml'
+put:
+  tags:
+    - authors
+  summary: Update author
+  operationId: updateAuthor
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Author.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+post:
+  tags:
+    - authors
+  summary: Create new author
+  operationId: createAuthor
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Author.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+patch:
+  tags:
+    - authors
+  summary: Patch method
+  operationId: patchAuthor
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Author.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK

@@ -1,0 +1,24 @@
+get:
+  tags:
+    - books
+  summary: Get book by id
+  operationId: findByIdBook
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Book.yaml'
+delete:
+  tags:
+    - books
+  summary: Delete book by id
+  operationId: deleteBookById
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK

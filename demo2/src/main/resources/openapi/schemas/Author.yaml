@@ -1,0 +1,25 @@
+type: object
+required:
+  - id
+  - authorName
+  - phoneNumber
+  - email
+  - age
+properties:
+  id:
+    type: integer
+    description: Id
+    format: int64
+  authorName:
+    type: string
+    description: Author name
+  phoneNumber:
+    type: string
+    description: Phone number
+  email:
+    type: string
+    description: Email
+  age:
+    type: integer
+    description: Age
+    format: int32

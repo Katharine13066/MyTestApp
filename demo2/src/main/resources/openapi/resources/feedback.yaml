@@ -1,0 +1,56 @@
+get:
+  tags:
+    - feedback
+  summary: Get all feedbacks
+  operationId: findAllFeedbacks
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/Feedback.yaml'
+put:
+  tags:
+    - feedback
+  summary: Update feedback
+  operationId: updateFeedback
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Feedback.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+post:
+  tags:
+    - feedback
+  summary: Create new feedback
+  operationId: createFeedback
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Feedback.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+patch:
+  tags:
+    - feedback
+  summary: Patch method
+  operationId: patchFeedback
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Feedback.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK

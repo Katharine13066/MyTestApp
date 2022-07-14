@@ -1,0 +1,24 @@
+get:
+  tags:
+    - feedback
+  summary: Get feedback by id
+  operationId: findByIdFeedback
+  parameters:
+    - $ref:  '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Feedback.yaml'
+delete:
+  tags:
+    - feedback
+  summary: Delete feedback by id
+  operationId: deleteFeedbackById
+  parameters:
+    - $ref: '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK

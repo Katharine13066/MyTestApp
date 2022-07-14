@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-bookHistory
+      author: Ekaterina Gorshunova
+      changes:
+        - createTable:
+            tableName: bookhistory
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: book_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: return_date
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: addForeignKeyForBookID
+      author: Ekaterina Gorshunova
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: bookhistory
+            baseColumnNames: book_id
+            baseTableSchemaName: public
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedTableName: books
+            referencedColumnNames: id
+            constraintName: book_id-constraint-bh
+            referencedTableSchemaName: public
+            validate: true
+  - changeSet:
+      id: addForeignKeyForUserID
+      author: Ekaterina Gorshunova
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: bookhistory
+            baseColumnNames: user_id
+            baseTableSchemaName: public
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: user_id-constraint-bh
+            referencedTableSchemaName: public
+            validate: true

@@ -1,0 +1,24 @@
+get:
+  tags:
+    - authors
+  summary: Get author by id
+  operationId: findByIdAuthor
+  parameters:
+    - $ref: '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Author.yaml'
+delete:
+  tags:
+    - authors
+  summary: Delete author by id
+  operationId: deleteAuthorById
+  parameters:
+    - $ref: '../parameters/id.yaml'
+  responses:
+    '200':
+      description: OK

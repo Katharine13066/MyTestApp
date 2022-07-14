@@ -15,6 +15,34 @@ paths:
     $ref: './resources/usersByIdMethods.yaml'
   /authentication:
     $ref: './resources/authentication.yaml'
+  /authors:
+    $ref: './resources/authors.yaml'
+  /authors/{id}:
+    $ref: './resources/authorsByIdMethods.yaml'
+  /books:
+    $ref: './resources/books.yaml'
+  /books/{id}:
+    $ref: './resources/bookByIdMethods.yaml'
+  /bookhistory:
+    $ref: './resources/bookhistory.yaml'
+  /bookhistory/{id}:
+    $ref: './resources/bookhistoryByIdMethods.yaml'
+  /feedback:
+    $ref: './resources/feedback.yaml'
+  /feedback/{id}:
+    $ref: './resources/feedbackByIdMethods.yaml'
+  /books/take_book/{bookId}/{userId}:
+    $ref: './resources/takeBook.yaml'
+  /books/return_book/{bookId}/{userId}:
+    $ref: './resources/returnBook.yaml'
+  /books/top10books:
+    $ref: './resources/top10books.yaml'
+  /authors/top10authors:
+    $ref: './resources/top10authors.yaml'
+  /feedback/getFeedbackByBookId/{id}:
+    $ref: './resources/getFeedbackByBookId.yaml'
+  /bookhistory/getBookHistoryByBookId/{id}:
+    $ref: './resources/getBookHistoryByBookId.yaml'
 components:
   schemas:
     UserDTO:
@@ -25,3 +53,11 @@ components:
       $ref: './schemas/AuthenticationRequest.yaml'
     AuthenticationResponseDTO:
       $ref: './schemas/AuthenticationResponse.yaml'
+    AuthorDTO:
+      $ref: './schemas/Author.yaml'
+    BookDTO:
+      $ref: './schemas/Book.yaml'
+    FeedbackDTO:
+      $ref: './schemas/Feedback.yaml'
+    BookHistoryDTO:
+      $ref: './schemas/BookHistory.yaml'

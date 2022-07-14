@@ -1,0 +1,56 @@
+get:
+  tags:
+    - bookhistory
+  summary: Get all books
+  operationId: findAllBookHistory
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/BookHistory.yaml'
+put:
+  tags:
+    - bookhistory
+  summary: Update bookHistory
+  operationId: updateBookHistory
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/BookHistory.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+post:
+  tags:
+    - bookhistory
+  summary: Create new bookHistory
+  operationId: createBookHistory
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/BookHistory.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+patch:
+  tags:
+    - bookhistory
+  summary: Patch method
+  operationId: patchBookHistory
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/BookHistory.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK

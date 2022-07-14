@@ -1,0 +1,22 @@
+type: object
+required:
+  - id
+  - userId
+  - bookId
+  - comments
+properties:
+  id:
+    type: integer
+    description: Id
+    format: int64
+  userId:
+    type: integer
+    description: User Id
+    format: int64
+  bookId:
+    type: integer
+    description: Book Id
+    format: int64
+  comments:
+    type: string
+    description: Comments

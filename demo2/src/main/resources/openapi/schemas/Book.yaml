@@ -1,0 +1,30 @@
+type: object
+required:
+  - id
+  - bookName
+  - publisher
+  - publicationDate
+  - status
+  - authorDtoList
+properties:
+  id:
+    type: integer
+    description: Id
+    format: int64
+  bookName:
+    type: string
+    description: Book name
+  publisher:
+    type: string
+    description: Publisher
+  publicationDate:
+    type: string
+    description: Publication date
+  status:
+    type: boolean
+    description: Book status
+  authorDtoList:
+    type: array
+    description: Author(s)
+    items:
+      $ref: './Author.yaml'

@@ -1,0 +1,56 @@
+get:
+  tags:
+    - books
+  summary: Get all books
+  operationId: findAllBooks
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/Book.yaml'
+put:
+  tags:
+    - books
+  summary: Update book
+  operationId: updateBook
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Book.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+post:
+  tags:
+    - books
+  summary: Create new book
+  operationId: createBook
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Book.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK
+patch:
+  tags:
+    - books
+  summary: Patch method
+  operationId: patchBook
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Book.yaml'
+    required: true
+  responses:
+    '200':
+      description: OK

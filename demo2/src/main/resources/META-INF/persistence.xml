@@ -5,11 +5,15 @@
     <persistence-unit name="LibraryPersistence" transaction-type="RESOURCE_LOCAL">
         <class>by.intexsoft.study.model.User</class>
         <class>by.intexsoft.study.model.Role</class>
+        <class>by.intexsoft.study.model.Book</class>
+        <class>by.intexsoft.study.model.Author</class>
+        <class>by.intexsoft.study.model.BookHistory</class>
+        <class>by.intexsoft.study.model.Feedback</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/dcbl1qo829g535" />
-            <property name="javax.persistence.jdbc.user" value="koiiwdlkhhrkvb" />
-            <property name="javax.persistence.jdbc.password" value="6a6375a36c4bfa247ba4b428df21ecda8fb6915aa36c741de1c812c589ab067b" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-63-35-156-160.eu-west-1.compute.amazonaws.com:5432/dbt4080qq40tim" />
+            <property name="javax.persistence.jdbc.user" value="obuxdcdgtplsmv" />
+            <property name="javax.persistence.jdbc.password" value="518637a1b142b924afc832e625b89e51e4b627e94726c2d6fdb8d9b6b84c4aac" />
         </properties>
     </persistence-unit>
 </persistence>
