@@ -34,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
                 .antMatchers(HttpMethod.GET,"/books", "/authors", "/feedback",
                         "/bookhistory", "/books/{id}", "/authors/{id}", "/feedback/{id}",
                         "/bookhistory/{id}", "/books/top10books", "/authors/top10authors",
@@ -43,13 +42,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/books/return_book/{bookId}/{userId}",
                         "/feedback").permitAll()
                 .antMatchers(HttpMethod.POST, "/feedback", "/authentication").permitAll()
-                .antMatchers(HttpMethod.GET, "/users", "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/users", "/users/{id}").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/books/delete/{id}",  "/authors/delete/{id}",
                          "/users/{id}", "/feedback/delete/{id}",
-                         "/bookhistory/delete/{id}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/books", "/authors", "/user", "/bookhistory").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/books", "/authors", "/user", "/bookhistory").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PATCH, "/books", "/authors", "/user", "/bookhistory", "/feedback").hasRole("ADMIN")
+                         "/bookhistory/delete/{id}").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/books", "/authors", "/user", "/bookhistory").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/books", "/authors", "/user", "/bookhistory").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/books", "/authors", "/user", "/bookhistory", "/feedback").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

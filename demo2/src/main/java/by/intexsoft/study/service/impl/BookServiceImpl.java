@@ -19,19 +19,15 @@ import java.util.List;
 @Service("bookService")
 public class BookServiceImpl implements BookService {
 
-    @Autowired
     private BookDao bookDao;
 
-    @Autowired
     private BookMapper bookMapper;
 
-    @Autowired
     private BookHistoryDao bookHistoryDao;
 
-    @Autowired
     private UserDao userDao;
 
-
+    @Autowired
     public BookServiceImpl(BookDao bookDao, BookMapper bookMapper, BookHistoryDao bookHistoryDao, UserDao userDao) {
         this.bookDao = bookDao;
         this.bookMapper = bookMapper;

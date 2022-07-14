@@ -18,21 +18,17 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserDao userDao;
 
-    @Autowired
     private RoleDao roleDao;
-    @Autowired
+
     private UserMapper userMapper;
 
-    @Autowired
     private RoleMapper roleMapper;
 
-    @Autowired
     private final BCryptPasswordEncoder passwordEncoder;
 
-
+    @Autowired
     public UserServiceImpl(UserDao userDao, RoleDao roleDao, UserMapper userMapper, RoleMapper roleMapper, BCryptPasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.roleDao = roleDao;

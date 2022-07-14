@@ -14,12 +14,11 @@ import java.util.List;
 @Service("feedbackService")
 public class FeedbackServiceImpl implements FeedbackService {
 
-    @Autowired
     private FeedbackDao feedbackDao;
 
-    @Autowired
     private FeedbackMapper feedbackMapper;
 
+    @Autowired
     public FeedbackServiceImpl(FeedbackDao feedbackDao, FeedbackMapper feedbackMapper) {
         this.feedbackDao = feedbackDao;
         this.feedbackMapper = feedbackMapper;

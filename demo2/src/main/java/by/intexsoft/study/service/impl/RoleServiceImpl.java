@@ -10,12 +10,11 @@ import org.springframework.stereotype.Service;
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
 
-    @Autowired
     private RoleDao roleDao;
 
-    @Autowired
     private RoleMapper roleMapper;
 
+    @Autowired
     public RoleServiceImpl(RoleDao roleDao, RoleMapper roleMapper) {
         this.roleDao = roleDao;
         this.roleMapper = roleMapper;

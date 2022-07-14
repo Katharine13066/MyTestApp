@@ -16,15 +16,15 @@ import java.util.List;
 @Service("bookhistoryService")
 public class BookHistoryServiceImpl implements BookHistoryService {
 
-    @Autowired
     private BookHistoryDao bookHistoryDao;
-    @Autowired
+
     private BookHistoryMapper bookHistoryMapper;
-    @Autowired
+
     private BookMapper bookMapper;
-    @Autowired
+
     private AuthorMapper authorMapper;
 
+    @Autowired
     public BookHistoryServiceImpl(BookHistoryDao bookHistoryDao, BookHistoryMapper bookHistoryMapper, BookMapper bookMapper, AuthorMapper authorMapper) {
         this.bookHistoryDao = bookHistoryDao;
         this.bookHistoryMapper = bookHistoryMapper;

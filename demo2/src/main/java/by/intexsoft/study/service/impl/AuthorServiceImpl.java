@@ -13,11 +13,10 @@ import java.util.List;
 @Service("authorService")
 public class AuthorServiceImpl implements AuthorService {
 
-    @Autowired
     private AuthorDao authorDao;
-    @Autowired
     private AuthorMapper authorMapper;
 
+    @Autowired
     public AuthorServiceImpl(AuthorDao authorDao, AuthorMapper authorMapper) {
         this.authorDao = authorDao;
         this.authorMapper = authorMapper;

@@ -2,7 +2,6 @@ package by.intexsoft.study.controller;
 
 import by.intexsoft.study.api.AuthorsApi;
 import by.intexsoft.study.model.AuthorDto;
-import by.intexsoft.study.model.BookDto;
 import by.intexsoft.study.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
