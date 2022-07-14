@@ -50,9 +50,16 @@ public class BookHistoryController implements BookhistoryApi {
     }
 
     @Override
-    public ResponseEntity<List<BookHistoryDto>> getBookHistoryByBookId(Long bookId) {
-        return ResponseEntity.ok(bookHistoryService.findBookHistoryByBookId(bookId));
+    public ResponseEntity<List<BookHistoryDto>> getBookHistoryByBookId(Long id) {
+        List<BookHistoryDto> bookHistoryDto = bookHistoryService.findBookHistoryByBookId(id);
+
+        if (bookHistoryDto.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<> (bookHistoryDto, HttpStatus.OK);
     }
+
 
     @Override
     public ResponseEntity<Void> patchBookHistory(BookHistoryDto bookHistoryDto) {

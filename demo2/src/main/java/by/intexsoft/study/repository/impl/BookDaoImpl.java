@@ -27,7 +27,7 @@ public class BookDaoImpl extends DaoImpl<Book> implements BookDao {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<BookHistory> root = criteriaQuery.from(BookHistory.class);
-        Join<BookHistory, Book> joinOnBooks =  root.join("books");
+        Join<BookHistory, Book> joinOnBooks =  root.join("book");
         Expression<Long> count = criteriaBuilder.count(root.get("bookId"));
         Expression<Long> countId = criteriaBuilder.count(root.get("id"));
         criteriaQuery.select(joinOnBooks)

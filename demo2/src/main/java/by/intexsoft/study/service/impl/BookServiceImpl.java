@@ -31,6 +31,7 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private UserDao userDao;
 
+
     public BookServiceImpl(BookDao bookDao, BookMapper bookMapper, BookHistoryDao bookHistoryDao, UserDao userDao) {
         this.bookDao = bookDao;
         this.bookMapper = bookMapper;
@@ -45,13 +46,15 @@ public class BookServiceImpl implements BookService {
         book.setStatus(false);
         bookDao.updateEntity(book);
         BookHistory bookHistory = new BookHistory();
-        bookHistory.setBookId(bookId);
-        bookHistory.setUserId(userId);
+        bookHistory.setBook(book);
+        bookHistory.setUser(userDao.findById(userId));
+       // bookHistory.setBookId(bookId);
+       // bookHistory.setUserId(userId);
         bookHistory.setReturnDate("");
         Date curDate = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yy");
         bookHistory.setStartDate(simpleDateFormat.format(curDate));
-        bookHistory.setBook(book);
+     //   bookHistory.setBook(book);
         bookHistoryDao.createEntity(bookHistory);
     }
 

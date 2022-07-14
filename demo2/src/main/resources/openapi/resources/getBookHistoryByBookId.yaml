@@ -4,12 +4,7 @@ get:
   summary: Get bookHistory by book id
   operationId: getBookHistoryByBookId
   parameters:
-    - name: bookId
-      in: path
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref:  '../parameters/id.yaml'
   responses:
     '200':
       description: OK
