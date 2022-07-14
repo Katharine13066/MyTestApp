@@ -1,7 +1,6 @@
 package by.intexsoft.study.controller;
 
 import by.intexsoft.study.api.BookhistoryApi;
-import by.intexsoft.study.model.BookDto;
 import by.intexsoft.study.model.BookHistoryDto;
 import by.intexsoft.study.service.BookHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
