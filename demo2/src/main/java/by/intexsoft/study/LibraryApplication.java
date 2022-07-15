@@ -10,8 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @SpringBootApplication
 public class LibraryApplication {
 
-    private static final Logger logger = LogManager
-            .getLogger(LibraryApplication.class);
+    private static final Logger logger = LogManager.getLogger(LibraryApplication.class);
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -21,7 +20,7 @@ public class LibraryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LibraryApplication.class, args);
-        logger.info("LibraryApp starts");
+        logger.info("LibraryApplication starts");
     }
 
 }
