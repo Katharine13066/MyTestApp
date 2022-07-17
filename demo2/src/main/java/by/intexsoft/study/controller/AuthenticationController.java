@@ -1,6 +1,7 @@
 package by.intexsoft.study.controller;
 
 import by.intexsoft.study.api.AuthenticationApi;
+import by.intexsoft.study.exception.JwtAuthenticationException;
 import by.intexsoft.study.mapper.UserMapper;
 import by.intexsoft.study.model.AuthenticationRequestDto;
 import by.intexsoft.study.model.AuthenticationResponseDto;
@@ -10,7 +11,6 @@ import by.intexsoft.study.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -54,7 +54,7 @@ public class AuthenticationController implements AuthenticationApi {
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid username or password");
+            throw new JwtAuthenticationException("Invalid username or password");
         }
     }
 }

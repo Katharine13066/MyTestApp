@@ -39,13 +39,7 @@ public class BookController implements BooksApi {
 
     @Override
     public ResponseEntity<BookDto> findByIdBook(Long id) {
-        BookDto bookDto = bookService.findById(id);
-
-        if (bookDto == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<> (bookDto, HttpStatus.OK);
+        return new ResponseEntity<> (bookService.findById(id), HttpStatus.OK);
     }
 
     @Override

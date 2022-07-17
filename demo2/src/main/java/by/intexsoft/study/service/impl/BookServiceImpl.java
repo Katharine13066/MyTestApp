@@ -1,6 +1,8 @@
 package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
+import by.intexsoft.study.exception.BookHistoryNotFoundByIdException;
+import by.intexsoft.study.exception.BookNotFoundByIdException;
 import by.intexsoft.study.mapper.BookMapper;
 import by.intexsoft.study.model.Book;
 import by.intexsoft.study.model.BookDto;
@@ -84,7 +86,7 @@ public class BookServiceImpl implements BookService {
 
         if(result == null){
             logger.warn("No book find by id");
-            return null;
+            throw new BookNotFoundByIdException(id);
         }
 
         logger.info("Find book by id");
@@ -102,6 +104,10 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public void deleteById(Long id) {
         bookDao.deleteById(id);
+        if(bookDao.findById(id) == null){
+            logger.warn("No book find by id (delete method)");
+            throw new BookNotFoundByIdException(id);
+        }
         logger.info("Delete book by id");
     }
 
@@ -124,7 +130,12 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public void patch(BookDto bookDto) {
-        bookMapper.updateBookFromDto(bookDto, bookDao.findById(bookDto.getId()));
+        Book book = bookDao.findById(bookDto.getId());
+        if (book == null){
+            logger.warn("No book find by id (patch method)");
+            throw new BookNotFoundByIdException(bookDto.getId());
+        }
+        bookMapper.updateBookFromDto(bookDto,  book);
         logger.info("Patch book");
     }
 }

@@ -39,13 +39,7 @@ public class BookHistoryController implements BookhistoryApi {
 
     @Override
     public ResponseEntity<BookHistoryDto> findByIdBookHistory(Long id) {
-        BookHistoryDto bookHistoryDto = bookHistoryService.findById(id);
-
-        if (bookHistoryDto == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<> (bookHistoryDto, HttpStatus.OK);
+        return new ResponseEntity<> (bookHistoryService.findById(id), HttpStatus.OK);
     }
 
     @Override

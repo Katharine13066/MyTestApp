@@ -1,16 +1,17 @@
 package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
+import by.intexsoft.study.exception.UserNotFoundByIdException;
 import by.intexsoft.study.mapper.RoleMapper;
 import by.intexsoft.study.mapper.UserMapper;
 import by.intexsoft.study.model.Role;
+import by.intexsoft.study.model.User;
 import by.intexsoft.study.model.UserDto;
 import by.intexsoft.study.repository.RoleDao;
 import by.intexsoft.study.repository.UserDao;
 import by.intexsoft.study.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.mapstruct.control.MappingControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -65,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
         if (result == null){
             logger.warn("No user find by id");
-            return null;
+            throw new UserNotFoundByIdException(id);
         }
 
         logger.info("Find user by id");
@@ -82,6 +83,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteById(Long id) {
+        if (userDao.findById(id) == null){
+            logger.warn("No user find by id (delete method)");
+            throw new UserNotFoundByIdException(id);
+        }
         userDao.deleteById(id);
         logger.info("Delete user by id");
     }
@@ -112,7 +117,12 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void patch(UserDto userDto) {
-        userMapper.updateUserFromDto(userDto, userDao.findById(userDto.getId()));
+        User user = userDao.findById(userDto.getId());
+        if (user == null){
+            logger.warn("No user find by id");
+            throw new UserNotFoundByIdException(userDto.getId());
+        }
+        userMapper.updateUserFromDto(userDto, user);
         logger.info("Patch user");
     }
 }

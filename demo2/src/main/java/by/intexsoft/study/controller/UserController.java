@@ -40,14 +40,7 @@ public class UserController implements UsersApi {
 
     @Override
     public ResponseEntity<UserDto> findByIdUser(Long id) {
-
-        UserDto userDto = userService.findById(id);
-
-        if (userDto == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<> (userDto, HttpStatus.OK);
+        return new ResponseEntity<> (userService.findById(id), HttpStatus.OK);
     }
 
     @Override

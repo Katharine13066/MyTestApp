@@ -1,7 +1,9 @@
 package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
+import by.intexsoft.study.exception.AuthorNotFoundByIdException;
 import by.intexsoft.study.mapper.AuthorMapper;
+import by.intexsoft.study.model.Author;
 import by.intexsoft.study.model.AuthorDto;
 import by.intexsoft.study.repository.AuthorDao;
 import by.intexsoft.study.service.AuthorService;
@@ -41,7 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
 
         if(result == null){
             logger.warn("No authors find by id");
-            return null;
+            throw new AuthorNotFoundByIdException(id);
         }
         logger.info("Find author by id");
         return  result;
@@ -58,6 +60,10 @@ public class AuthorServiceImpl implements AuthorService {
     @Transactional
     public void deleteById(Long id) {
         authorDao.deleteById(id);
+        if(authorDao.findById(id) == null){
+            logger.warn("No authors find by id (delete method)");
+            throw new AuthorNotFoundByIdException(id);
+        }
         logger.info("Delete author by id");
     }
 
@@ -80,6 +86,11 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     @Transactional
     public void patch(AuthorDto authorDto) {
+        Author author = authorDao.findById(authorDto.getId());
+        if (author == null){
+            logger.warn("No authors find by id (patch method)");
+            throw new AuthorNotFoundByIdException(authorDto.getId());
+        }
         authorMapper.updateAuthorFromDto(authorDto, authorDao.findById(authorDto.getId()));
         logger.info("Patch author");
     }

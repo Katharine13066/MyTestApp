@@ -39,13 +39,7 @@ public class FeedbackController implements FeedbackApi {
 
     @Override
     public ResponseEntity<FeedbackDto> findByIdFeedback(Long id) {
-        FeedbackDto feedbackDto = feedbackService.findById(id);
-
-        if (feedbackDto == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<> (feedbackDto, HttpStatus.OK);
+        return new ResponseEntity<> (feedbackService.findById(id), HttpStatus.OK);
     }
 
     @Override

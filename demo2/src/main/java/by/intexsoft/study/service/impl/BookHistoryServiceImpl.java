@@ -1,6 +1,7 @@
 package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
+import by.intexsoft.study.exception.BookHistoryNotFoundByIdException;
 import by.intexsoft.study.mapper.AuthorMapper;
 import by.intexsoft.study.mapper.BookHistoryMapper;
 import by.intexsoft.study.mapper.BookMapper;
@@ -57,7 +58,7 @@ public class BookHistoryServiceImpl implements BookHistoryService {
 
         if(result == null){
             logger.warn("No bookHistory find by id");
-            return null;
+            throw new BookHistoryNotFoundByIdException(id);
         }
 
         return result;
@@ -73,6 +74,10 @@ public class BookHistoryServiceImpl implements BookHistoryService {
     @Override
     @Transactional
     public void deleteById(Long id) {
+        if (bookHistoryDao.findBookHistoryByBookId(id) == null){
+            logger.warn("No bookHistory find by id (delete method)");
+            throw new BookHistoryNotFoundByIdException(id);
+        }
         bookHistoryDao.deleteById(id);
         logger.info("Delete bookHistory by id");
     }
@@ -96,7 +101,12 @@ public class BookHistoryServiceImpl implements BookHistoryService {
     @Override
     @Transactional
     public void patch(BookHistoryDto bookHistoryDto) {
-        bookHistoryMapper.updateFeedbackFromDto(bookHistoryDto, bookHistoryDao.findById(bookHistoryDto.getId()));
+        BookHistory bookHistory = bookHistoryDao.findById(bookHistoryDto.getId());
+        if(bookHistory == null){
+            logger.warn("No bookHistory find by id (pathch method");
+            throw new BookHistoryNotFoundByIdException(bookHistoryDto.getId());
+        }
+        bookHistoryMapper.updateFeedbackFromDto(bookHistoryDto, bookHistory);
         logger.info("Patch bookHistory");
     }
 }

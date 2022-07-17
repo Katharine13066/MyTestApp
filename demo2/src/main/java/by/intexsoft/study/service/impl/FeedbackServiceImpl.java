@@ -1,6 +1,8 @@
 package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
+import by.intexsoft.study.exception.FeedbackNotFoundByIdException;
+import by.intexsoft.study.exception.UserNotFoundByIdException;
 import by.intexsoft.study.mapper.FeedbackMapper;
 import by.intexsoft.study.model.Feedback;
 import by.intexsoft.study.model.FeedbackDto;
@@ -42,7 +44,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
         if(result == null){
             logger.warn("No feedback find by id");
-            return null;
+            throw new FeedbackNotFoundByIdException(id);
         }
         logger.info("Find feedback by id");
         return result;
@@ -58,6 +60,10 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public void deleteById(Long id) {
+        if(feedbackDao.findFeedbacksByBookId(id) == null){
+            logger.warn("No feedback find by id (delete method)");
+            throw new FeedbackNotFoundByIdException(id);
+        }
         feedbackDao.deleteById(id);
         logger.info("Delete feedback by id");
     }
@@ -81,7 +87,12 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public void patch(FeedbackDto feedbackDto) {
-        feedbackMapper.updateFeedbackFromDto(feedbackDto, feedbackDao.findById(feedbackDto.getId()));
+        Feedback feedback = feedbackDao.findById(feedbackDto.getId());
+        if(feedback == null){
+            logger.warn("No feedback find by id (patch method)");
+            throw new FeedbackNotFoundByIdException(feedbackDto.getId());
+        }
+        feedbackMapper.updateFeedbackFromDto(feedbackDto, feedback);
         logger.info("Patch feedback");
     }
 }

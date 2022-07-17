@@ -39,13 +39,7 @@ public class AuthorController implements AuthorsApi {
 
     @Override
     public ResponseEntity<AuthorDto> findByIdAuthor(Long id) {
-        AuthorDto authorDto = authorService.findById(id);
-
-        if (authorDto == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<> (authorDto, HttpStatus.OK);
+        return new ResponseEntity<> (authorService.findById(id), HttpStatus.OK);
     }
 
     @Override
