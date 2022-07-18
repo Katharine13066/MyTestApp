@@ -9,3 +9,8 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:changelog/db.changelog-master.yaml
+  #server:
+  #  forward-headers-strategy: framework
+  #springdoc:
+   # swagger-ui:
+    #  path: http://localhost:8080/swagger-ui/index.html?configUrl=/library-openapi/swagger-config
