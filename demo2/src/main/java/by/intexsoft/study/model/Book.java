@@ -35,8 +35,8 @@ public class Book implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
+               joinColumns = @JoinColumn(name = "book_id"),
+               inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
     @OneToMany
@@ -110,4 +110,5 @@ public class Book implements Serializable {
     public void setFeedbacks(List<Feedback> feedbacks) {
         this.feedbacks = feedbacks;
     }
+
 }

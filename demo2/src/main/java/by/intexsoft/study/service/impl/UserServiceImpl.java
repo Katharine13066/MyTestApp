@@ -125,4 +125,5 @@ public class UserServiceImpl implements UserService {
         userMapper.updateUserFromDto(userDto, user);
         logger.info("Patch user");
     }
+
 }

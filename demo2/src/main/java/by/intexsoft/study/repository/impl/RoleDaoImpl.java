@@ -1,6 +1,5 @@
 package by.intexsoft.study.repository.impl;
 
-
 import by.intexsoft.study.model.Role;
 import by.intexsoft.study.repository.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,11 @@ public class RoleDaoImpl extends DaoImpl<Role> implements RoleDao {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Role> criteriaQuery = criteriaBuilder.createQuery(Role.class);
         Root<Role> root = criteriaQuery.from(Role.class);
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("roleName"), roleName));
+        criteriaQuery.select(root)
+                .where(criteriaBuilder
+                        .equal(root.get("roleName"), roleName));
         TypedQuery<Role> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getSingleResult();
     }
+
 }

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AuthorDao extends Dao<Author> {
     List<Author> get10TheMostPopularAuthors();
+
 }

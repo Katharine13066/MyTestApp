@@ -1,6 +1,8 @@
 package by.intexsoft.study.exception;
 
-public class BookNotFoundByIdException extends RuntimeException{
+import javax.persistence.EntityNotFoundException;
+
+public class BookNotFoundByIdException extends EntityNotFoundException {
 
     public BookNotFoundByIdException(Long id){
         super(String.format("Book not found by id: %d", id));

@@ -31,4 +31,5 @@ public class RoleServiceImpl implements RoleService {
         logger.info("Find role by roleName");
         return result;
     }
+
 }

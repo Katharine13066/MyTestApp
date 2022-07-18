@@ -28,12 +28,13 @@ public class BookDaoImpl extends DaoImpl<Book> implements BookDao {
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<BookHistory> root = criteriaQuery.from(BookHistory.class);
         Join<BookHistory, Book> joinOnBooks =  root.join("book");
-        Expression<Long> count = criteriaBuilder.count(root.get("bookId"));
+        Expression<Long> countBookId = criteriaBuilder.count(root.get("bookId"));
         Expression<Long> countId = criteriaBuilder.count(root.get("id"));
         criteriaQuery.select(joinOnBooks)
-                .groupBy(joinOnBooks.get("bookName"), joinOnBooks.get("id"))
-                .having(criteriaBuilder.gt(count, 0))
-                .orderBy(criteriaBuilder.desc(countId));
+                     .groupBy(joinOnBooks.get("bookName"), joinOnBooks.get("id"))
+                     .having(criteriaBuilder.gt(countBookId, 0))
+                     .orderBy(criteriaBuilder.desc(countId));
         return getEntityManager().createQuery(criteriaQuery).getResultList();
     }
+
 }

@@ -29,7 +29,6 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorMapper = authorMapper;
     }
 
-
     @Override
     public List<AuthorDto> get10TheMostPopularAuthors() {
         List<AuthorDto> result = authorMapper.toDtos(authorDao.get10TheMostPopularAuthors());
@@ -40,7 +39,6 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDto findById(Long id) {
         AuthorDto result = authorMapper.toDto(authorDao.findById(id));
-
         if(result == null){
             logger.warn("No authors find by id");
             throw new AuthorNotFoundByIdException(id);
@@ -94,4 +92,5 @@ public class AuthorServiceImpl implements AuthorService {
         authorMapper.updateAuthorFromDto(authorDto, authorDao.findById(authorDto.getId()));
         logger.info("Patch author");
     }
+
 }

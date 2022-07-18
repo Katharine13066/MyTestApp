@@ -25,8 +25,11 @@ public class FeedbackDaoImpl extends DaoImpl<Feedback> implements FeedbackDao {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Feedback> criteriaQuery = criteriaBuilder.createQuery(Feedback.class);
         Root<Feedback> root = criteriaQuery.from(Feedback.class);
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("bookId"), bookId));
+        criteriaQuery.select(root)
+                .where(criteriaBuilder
+                        .equal(root.get("bookId"), bookId));
         TypedQuery<Feedback> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getResultList();
     }
+
 }

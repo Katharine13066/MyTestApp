@@ -2,7 +2,6 @@ package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
 import by.intexsoft.study.exception.FeedbackNotFoundByIdException;
-import by.intexsoft.study.exception.UserNotFoundByIdException;
 import by.intexsoft.study.mapper.FeedbackMapper;
 import by.intexsoft.study.model.Feedback;
 import by.intexsoft.study.model.FeedbackDto;
@@ -95,4 +94,5 @@ public class FeedbackServiceImpl implements FeedbackService {
         feedbackMapper.updateFeedbackFromDto(feedbackDto, feedback);
         logger.info("Patch feedback");
     }
+
 }

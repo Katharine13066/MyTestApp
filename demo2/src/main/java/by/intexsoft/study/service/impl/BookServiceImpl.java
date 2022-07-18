@@ -1,7 +1,6 @@
 package by.intexsoft.study.service.impl;
 
 import by.intexsoft.study.LibraryApplication;
-import by.intexsoft.study.exception.BookHistoryNotFoundByIdException;
 import by.intexsoft.study.exception.BookNotFoundByIdException;
 import by.intexsoft.study.mapper.BookMapper;
 import by.intexsoft.study.model.Book;
@@ -83,12 +82,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDto findById(Long id) {
         BookDto result = bookMapper.toDto(bookDao.findById(id));
-
         if(result == null){
             logger.warn("No book find by id");
             throw new BookNotFoundByIdException(id);
         }
-
         logger.info("Find book by id");
         return result;
     }
@@ -138,4 +135,5 @@ public class BookServiceImpl implements BookService {
         bookMapper.updateBookFromDto(bookDto,  book);
         logger.info("Patch book");
     }
+
 }

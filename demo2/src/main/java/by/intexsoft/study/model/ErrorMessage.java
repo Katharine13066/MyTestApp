@@ -30,4 +30,5 @@ public class ErrorMessage {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

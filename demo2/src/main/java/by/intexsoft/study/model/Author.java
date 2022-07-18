@@ -34,8 +34,8 @@ public class Author implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
+               joinColumns = @JoinColumn(name = "author_id"),
+               inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> books;
 
     public Long getId() {
@@ -85,4 +85,5 @@ public class Author implements Serializable {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
+
 }

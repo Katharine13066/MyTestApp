@@ -23,13 +23,13 @@ public class BookHistoryController implements BookhistoryApi {
     @Override
     public ResponseEntity<Void> createBookHistory(BookHistoryDto bookHistoryDto) {
         bookHistoryService.create(bookHistoryDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> deleteBookHistoryById(Long id) {
         bookHistoryService.deleteById(id);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
@@ -44,25 +44,19 @@ public class BookHistoryController implements BookhistoryApi {
 
     @Override
     public ResponseEntity<List<BookHistoryDto>> getBookHistoryByBookId(Long id) {
-        List<BookHistoryDto> bookHistoryDto = bookHistoryService.findBookHistoryByBookId(id);
-
-        if (bookHistoryDto.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<> (bookHistoryDto, HttpStatus.OK);
+        return new ResponseEntity<> (bookHistoryService.findBookHistoryByBookId(id), HttpStatus.OK);
     }
-
 
     @Override
     public ResponseEntity<Void> patchBookHistory(BookHistoryDto bookHistoryDto) {
         bookHistoryService.patch(bookHistoryDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> updateBookHistory(BookHistoryDto bookHistoryDto) {
         bookHistoryService.update(bookHistoryDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
 }

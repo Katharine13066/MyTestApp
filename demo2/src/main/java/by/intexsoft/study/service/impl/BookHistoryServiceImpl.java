@@ -55,12 +55,10 @@ public class BookHistoryServiceImpl implements BookHistoryService {
     @Override
     public BookHistoryDto findById(Long id) {
         BookHistoryDto result = bookHistoryMapper.toDto(bookHistoryDao.findById(id));
-
         if(result == null){
             logger.warn("No bookHistory find by id");
             throw new BookHistoryNotFoundByIdException(id);
         }
-
         return result;
     }
 
@@ -109,4 +107,5 @@ public class BookHistoryServiceImpl implements BookHistoryService {
         bookHistoryMapper.updateFeedbackFromDto(bookHistoryDto, bookHistory);
         logger.info("Patch bookHistory");
     }
+
 }

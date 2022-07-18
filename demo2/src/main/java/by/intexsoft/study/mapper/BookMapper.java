@@ -9,14 +9,11 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {AuthorMapper.class, BookHistoryMapper.class, FeedbackMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface BookMapper {
-
-    BookMapper bookMapper = Mappers.getMapper(BookMapper.class);
 
     BookDto toDto(Book book);
 

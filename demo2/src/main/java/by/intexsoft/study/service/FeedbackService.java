@@ -7,4 +7,5 @@ import java.util.List;
 public interface FeedbackService extends LibraryService<FeedbackDto>{
 
     List<FeedbackDto> getFeedbacksByBookId(Long bookId);
+
 }

@@ -23,13 +23,13 @@ public class FeedbackController implements FeedbackApi {
     @Override
     public ResponseEntity<Void> createFeedback(FeedbackDto feedbackDto) {
         feedbackService.create(feedbackDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> deleteFeedbackById(Long id) {
         feedbackService.deleteById(id);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class FeedbackController implements FeedbackApi {
 
     @Override
     public ResponseEntity<FeedbackDto> findByIdFeedback(Long id) {
-        return new ResponseEntity<> (feedbackService.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(feedbackService.findById(id), HttpStatus.OK);
     }
 
     @Override
@@ -50,12 +50,13 @@ public class FeedbackController implements FeedbackApi {
     @Override
     public ResponseEntity<Void> patchFeedback(FeedbackDto feedbackDto) {
         feedbackService.patch(feedbackDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> updateFeedback(FeedbackDto feedbackDto) {
         feedbackService.update(feedbackDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
 }

@@ -19,35 +19,30 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     private static final Logger logger = LogManager.getLogger(LibraryApplication.class);
 
-    @Autowired
-    @Qualifier("userService")
     private final UserService userService;
 
-    @Autowired
     private final UserMapper userMapper;
 
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-
-    public JwtUserDetailsService(UserService userService, UserMapper userMapper) {
+    @Autowired
+    public JwtUserDetailsService(@Qualifier("userService") UserService userService, UserMapper userMapper, BCryptPasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userMapper.fromDto(userService.findByUserName(username));
-
         if (user == null) {
             throw new UsernameNotFoundException("User with username: " + username + " not found");
         }
-
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
-
         JwtUser jwtUser = JwtUserFactory.create(user);
         logger.info("User successfully loaded");
         return jwtUser;
     }
+
 }

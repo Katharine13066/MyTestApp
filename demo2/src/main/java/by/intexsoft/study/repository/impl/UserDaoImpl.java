@@ -24,7 +24,9 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("email"), email));
+        criteriaQuery.select(root)
+                .where(criteriaBuilder
+                        .equal(root.get("email"), email));
         TypedQuery<User> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getSingleResult();
     }
@@ -34,8 +36,11 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("userName"), userName));
+        criteriaQuery.select(root)
+                .where(criteriaBuilder
+                        .equal(root.get("userName"), userName));
         TypedQuery<User> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getSingleResult();
     }
+
 }

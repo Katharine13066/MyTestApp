@@ -16,8 +16,6 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = BookMapper.class, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface FeedbackMapper {
 
-    FeedbackMapper feedbackMapper = Mappers.getMapper(FeedbackMapper.class);
-
     FeedbackDto toDto(Feedback feedback);
 
     @InheritInverseConfiguration

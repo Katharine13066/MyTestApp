@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DaoImpl<T> implements Dao<T> {
@@ -21,6 +20,7 @@ public abstract class DaoImpl<T> implements Dao<T> {
         this.entityManager = entityManager;
         this.clazz = clazz;
     }
+
     protected EntityManager getEntityManager() {
         return entityManager;
     }
@@ -39,7 +39,6 @@ public abstract class DaoImpl<T> implements Dao<T> {
         entityManager.persist(t);
         return t;
     }
-
 
     @Override
     public T updateEntity(T t) {

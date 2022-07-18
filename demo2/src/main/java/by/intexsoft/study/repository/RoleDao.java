@@ -5,4 +5,5 @@ import by.intexsoft.study.model.Role;
 public interface RoleDao extends Dao<Role> {
 
     Role findByRoleName(String roleName);
+
 }

@@ -70,4 +70,5 @@ public class Feedback implements Serializable {
     public void setBook(Book book) {
         this.book = book;
     }
+
 }

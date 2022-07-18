@@ -25,8 +25,12 @@ public class BookHistoryDaoImpl extends DaoImpl<BookHistory> implements BookHist
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<BookHistory> criteriaQuery = criteriaBuilder.createQuery(BookHistory.class);
         Root<BookHistory> root = criteriaQuery.from(BookHistory.class);
-        criteriaQuery.select(root).where(criteriaBuilder.and(criteriaBuilder.equal(root.get("bookId"), bookId),
-                criteriaBuilder.equal(root.get("returnDate"), ""),criteriaBuilder.equal(root.get("userId"), userId)));
+        criteriaQuery.select(root)
+                     .where(criteriaBuilder
+                             .and(criteriaBuilder
+                                     .equal(root.get("bookId"), bookId),
+                                            criteriaBuilder.equal(root.get("returnDate"), ""),
+                                            criteriaBuilder.equal(root.get("userId"), userId)));
         TypedQuery<BookHistory> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getResultList().get(0);
     }
@@ -36,7 +40,9 @@ public class BookHistoryDaoImpl extends DaoImpl<BookHistory> implements BookHist
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<BookHistory> criteriaQuery = criteriaBuilder.createQuery(BookHistory.class);
         Root<BookHistory> root = criteriaQuery.from(BookHistory.class);
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("bookId"), bookId));
+        criteriaQuery.select(root)
+                     .where(criteriaBuilder
+                             .equal(root.get("bookId"), bookId));
         TypedQuery<BookHistory> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getResultList();
     }

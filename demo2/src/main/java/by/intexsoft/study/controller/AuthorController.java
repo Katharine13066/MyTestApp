@@ -23,13 +23,13 @@ public class AuthorController implements AuthorsApi {
     @Override
     public ResponseEntity<Void> createAuthor(AuthorDto authorDto) {
         authorService.create(authorDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> deleteAuthorById(Long id) {
         authorService.deleteById(id);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class AuthorController implements AuthorsApi {
 
     @Override
     public ResponseEntity<AuthorDto> findByIdAuthor(Long id) {
-        return new ResponseEntity<> (authorService.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(authorService.findById(id), HttpStatus.OK);
     }
 
     @Override
@@ -50,12 +50,13 @@ public class AuthorController implements AuthorsApi {
     @Override
     public ResponseEntity<Void> patchAuthor(AuthorDto authorDto) {
         authorService.patch(authorDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> updateAuthor(AuthorDto authorDto) {
         authorService.update(authorDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
 }

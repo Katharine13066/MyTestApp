@@ -7,25 +7,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 public class JwtUser implements UserDetails {
+
     private final Long id;
+
     private final String username;
+
     private final String phoneNumber;
+
     private final String email;
+
     private final String birthday;
+
     private final String password;
+
     private final boolean enabled;
+
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public JwtUser(
-            Long id,
-            String username,
-            String phoneNumber,
-            String email,
-            String birthday,
-            String password,
-            Collection<? extends GrantedAuthority> authorities,
-            boolean enabled
-    ) {
+    public JwtUser(Long id, String username, String phoneNumber, String email, String birthday, String password, Collection<? extends GrantedAuthority> authorities, boolean enabled) {
         this.id = id;
         this.username = username;
         this.phoneNumber = phoneNumber;

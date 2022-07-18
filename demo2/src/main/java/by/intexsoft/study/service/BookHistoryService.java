@@ -8,4 +8,5 @@ public interface BookHistoryService extends LibraryService<BookHistoryDto> {
 
     BookHistoryDto getLastBookHistoryByBookIdAndUserId(Long bookId, Long userId);
     List<BookHistoryDto> findBookHistoryByBookId(Long bookId);
+
 }

@@ -28,67 +28,60 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    /*   @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/swagger-ui/**",
-                " /v3/api-docs/**", "/library/v3/api-docs/**",
-                " /v2/api-docs/**", "/library/v2/api-docs/**",
-                "/v2/api-docs",
-                "/configuration/ui",
-                "/swagger-resources/**",
-                "/configuration/security",
-                "/swagger-ui.html",
-                "/webjars/**",
-                "/library-openapi/**");
-
-       /*
-        .antMatchers("/swagger-ui/**", "/library-openapi/**").permitAll()
-                .antMatchers("/swagger-ui/**",
-                        " /v3/api-docs/**", "/library/v3/api-docs/**",
-                        " /v2/api-docs/**", "/library/v2/api-docs/**",
-                        "/v2/api-docs",
-                        "/configuration/ui",
-                        "/swagger-resources/**",
-                        "/configuration/security",
-                        "/swagger-ui.html",
-                        "/webjars/**",
-                        "/library-openapi/**").permitAll()
-
-    }
-    */
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/swagger-ui/**", "/library-openapi/**").permitAll()
-                .antMatchers("/swagger-ui/**",
-                        " /v3/api-docs/**", "/library/v3/api-docs/**",
-                        " /v2/api-docs/**", "/library/v2/api-docs/**",
-                        "/v2/api-docs",
-                        "/configuration/ui",
-                        "/swagger-resources/**",
-                        "/configuration/security",
-                        "/swagger-ui.html",
-                        "/webjars/**",
-                        "/library-openapi/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/books", "/authors", "/feedback",
-                        "/bookhistory", "/books/{id}", "/authors/{id}", "/feedback/{id}",
-                        "/bookhistory/{id}", "/books/top10books", "/authors/top10authors",
-                        "/feedback/getFeedbackByBookId/{id}", "/bookhistory/getBookHistoryByBookId/{id}").permitAll()
-                .antMatchers(HttpMethod.PUT, "/books/take_book/{bookId}/{userId}",
-                        "/books/return_book/{bookId}/{userId}",
-                        "/feedback").permitAll()
-                .antMatchers(HttpMethod.POST, "/feedback", "/authentication").permitAll()
-                .antMatchers(HttpMethod.GET, "/users", "/users/{id}").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/books/delete/{id}",  "/authors/delete/{id}",
-                         "/users/{id}", "/feedback/delete/{id}",
-                         "/bookhistory/delete/{id}").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.POST, "/books", "/authors", "/user", "/bookhistory").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/books", "/authors", "/user", "/bookhistory").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.PATCH, "/books", "/authors", "/user", "/bookhistory", "/feedback").hasAuthority("ADMIN")
+                .antMatchers(
+                        "/swagger-ui/**",
+                                    "/library-openapi/**").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/books",
+                                    "/books/{id}",
+                                    "/books/top10books",
+                                    "/authors",
+                                    "/authors/{id}",
+                                    "/authors/top10authors",
+                                    "/feedback",
+                                    "/feedback/{id}",
+                                    "/feedback/getFeedbackByBookId/{id}",
+                                    "/bookhistory",
+                                    "/bookhistory/{id}",
+                                    "/bookhistory/getBookHistoryByBookId/{id}").permitAll()
+                .antMatchers(HttpMethod.POST,
+                         "/feedback",
+                                    "/authentication").permitAll()
+                .antMatchers(HttpMethod.PUT,
+                         "/books/take_book/{bookId}/{userId}",
+                                    "/books/return_book/{bookId}/{userId}",
+                                    "/feedback").permitAll()
+                .antMatchers(HttpMethod.GET,
+                          "/users",
+                                     "/users/{id}").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST,
+                          "/books",
+                                     "/authors",
+                                     "/user",
+                                     "/bookhistory").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT,
+                          "/books",
+                                     "/authors",
+                                     "/user",
+                                     "/bookhistory").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PATCH,
+                          "/books",
+                                     "/authors",
+                                     "/user",
+                                     "/bookhistory",
+                                     "/feedback").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,
+                          "/books/delete/{id}",
+                                     "/authors/delete/{id}",
+                                     "/users/{id}",
+                                     "/feedback/delete/{id}",
+                                     "/bookhistory/delete/{id}").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

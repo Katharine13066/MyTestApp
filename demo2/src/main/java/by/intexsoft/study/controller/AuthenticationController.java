@@ -38,23 +38,20 @@ public class AuthenticationController implements AuthenticationApi {
     @Override
     public ResponseEntity<AuthenticationResponseDto> loginUser(AuthenticationRequestDto authenticationRequestDto) {
         try {
-            String username = authenticationRequestDto.getUsername();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, authenticationRequestDto.getPassword()));
-            User user = userMapper.fromDto(userService.findByUserName(username));
-
+            String userName = authenticationRequestDto.getUsername();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, authenticationRequestDto.getPassword()));
+            User user = userMapper.fromDto(userService.findByUserName(userName));
             if (user == null) {
-                throw new UsernameNotFoundException("User with username: " + username + " not found");
+                throw new UsernameNotFoundException("User with username: " + userName + " not found");
             }
-
-            String token = jwtTokenProvider.createToken(username, user.getRoles());
-
+            String token = jwtTokenProvider.createToken(userName, user.getRoles());
             AuthenticationResponseDto response = new AuthenticationResponseDto();
-            response.setUsername(username);
+            response.setUsername(userName);
             response.setToken(token);
-
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
             throw new JwtAuthenticationException("Invalid username or password");
         }
     }
+
 }

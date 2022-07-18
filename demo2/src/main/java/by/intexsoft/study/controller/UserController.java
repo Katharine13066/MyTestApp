@@ -20,7 +20,6 @@ public class UserController implements UsersApi {
         this.userService = userService;
     }
 
-
     @Override
     public ResponseEntity<Void> createUser(UserDto userDto) {
         userService.create(userDto);
@@ -30,7 +29,7 @@ public class UserController implements UsersApi {
     @Override
     public ResponseEntity<Void> deleteUserById(Long id) {
         userService.deleteById(id);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
@@ -46,12 +45,13 @@ public class UserController implements UsersApi {
     @Override
     public ResponseEntity<Void> patchUser(UserDto userDto) {
         userService.patch(userDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> updateUser(UserDto userDto) {
         userService.update(userDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
 }

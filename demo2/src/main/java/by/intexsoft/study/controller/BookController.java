@@ -23,13 +23,13 @@ public class BookController implements BooksApi {
     @Override
     public ResponseEntity<Void> createBook(BookDto bookDto) {
         bookService.create(bookDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> deleteBookById(Long id) {
         bookService.deleteById(id);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class BookController implements BooksApi {
 
     @Override
     public ResponseEntity<BookDto> findByIdBook(Long id) {
-        return new ResponseEntity<> (bookService.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(bookService.findById(id), HttpStatus.OK);
     }
 
     @Override
@@ -50,24 +50,25 @@ public class BookController implements BooksApi {
     @Override
     public ResponseEntity<Void> patchBook(BookDto bookDto) {
         bookService.patch(bookDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> returnBook(Long bookId, Long userId) {
         bookService.returnBook(bookId, userId);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> takeBook(Long bookId, Long userId) {
         bookService.takeBook(bookId, userId);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> updateBook(BookDto bookDto) {
         bookService.update(bookDto);
-        return new ResponseEntity<Void>( HttpStatus.OK );
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
 }

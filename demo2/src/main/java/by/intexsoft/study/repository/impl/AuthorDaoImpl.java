@@ -30,12 +30,13 @@ public class AuthorDaoImpl extends DaoImpl<Author> implements AuthorDao {
         Root<BookHistory> root = criteriaQuery.from(BookHistory.class);
         Join<BookHistory, Book> joinOnBooks =  root.join("book");
         Join<Book, Author> joinOnAuthors =  joinOnBooks.join("authors");
-        Expression<Long> count = criteriaBuilder.count(root.get("bookId"));
+        Expression<Long> countBookId = criteriaBuilder.count(root.get("bookId"));
         Expression<Long> countId = criteriaBuilder.count(root.get("id"));
         criteriaQuery.select(joinOnAuthors)
-                .groupBy(joinOnAuthors.get("authorName"), joinOnAuthors.get("id"))
-                .having(criteriaBuilder.gt(count, 0))
-                .orderBy(criteriaBuilder.desc(countId));
+                     .groupBy(joinOnAuthors.get("authorName"), joinOnAuthors.get("id"))
+                     .having(criteriaBuilder.gt(countBookId, 0))
+                     .orderBy(criteriaBuilder.desc(countId));
         return getEntityManager().createQuery(criteriaQuery).getResultList();
     }
+
 }

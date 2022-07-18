@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AuthorService extends LibraryService<AuthorDto>{
     List<AuthorDto> get10TheMostPopularAuthors();
+
 }
