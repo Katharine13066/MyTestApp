@@ -72,10 +72,6 @@ public class BookHistoryServiceImpl implements BookHistoryService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-        if (bookHistoryDao.findBookHistoryByBookId(id) == null){
-            logger.warn("No bookHistory find by id (delete method)");
-            throw new BookHistoryNotFoundByIdException(id);
-        }
         bookHistoryDao.deleteById(id);
         logger.info("Delete bookHistory by id");
     }
@@ -91,9 +87,7 @@ public class BookHistoryServiceImpl implements BookHistoryService {
     @Override
     @Transactional
     public BookHistoryDto update(BookHistoryDto bookHistoryDto) {
-        BookHistoryDto result = bookHistoryMapper.toDto(bookHistoryDao.updateEntity(bookHistoryMapper.fromDto(bookHistoryDto)));
-        logger.info("Update bookHistory");
-        return result;
+        return bookHistoryMapper.toDto(bookHistoryDao.updateEntity(bookHistoryMapper.fromDto(bookHistoryDto)));
     }
 
     @Override

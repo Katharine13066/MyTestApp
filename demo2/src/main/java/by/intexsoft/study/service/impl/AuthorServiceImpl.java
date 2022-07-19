@@ -58,10 +58,6 @@ public class AuthorServiceImpl implements AuthorService {
     @Transactional
     public void deleteById(Long id) {
         authorDao.deleteById(id);
-        if(authorDao.findById(id) == null){
-            logger.warn("No authors find by id (delete method)");
-            throw new AuthorNotFoundByIdException(id);
-        }
         logger.info("Delete author by id");
     }
 
@@ -76,9 +72,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     @Transactional
     public AuthorDto update(AuthorDto authorDto) {
-        AuthorDto result = authorMapper.toDto(authorDao.updateEntity(authorMapper.fromDto(authorDto)));
-        logger.info("Update author");
-        return result;
+       return authorMapper.toDto(authorDao.updateEntity(authorMapper.fromDto(authorDto)));
     }
 
     @Override

@@ -59,10 +59,6 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-        if(feedbackDao.findFeedbacksByBookId(id) == null){
-            logger.warn("No feedback find by id (delete method)");
-            throw new FeedbackNotFoundByIdException(id);
-        }
         feedbackDao.deleteById(id);
         logger.info("Delete feedback by id");
     }
@@ -78,9 +74,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public FeedbackDto update(FeedbackDto feedbackDto) {
-        FeedbackDto result = feedbackMapper.toDto(feedbackDao.updateEntity(feedbackMapper.fromDto(feedbackDto)));
-        logger.info("Update feedback");
-        return result;
+        return feedbackMapper.toDto(feedbackDao.updateEntity(feedbackMapper.fromDto(feedbackDto)));
     }
 
     @Override

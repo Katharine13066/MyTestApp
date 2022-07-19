@@ -101,10 +101,6 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public void deleteById(Long id) {
         bookDao.deleteById(id);
-        if(bookDao.findById(id) == null){
-            logger.warn("No book find by id (delete method)");
-            throw new BookNotFoundByIdException(id);
-        }
         logger.info("Delete book by id");
     }
 
@@ -119,9 +115,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public BookDto update(BookDto bookDto) {
-        BookDto result = bookMapper.toDto(bookDao.updateEntity(bookMapper.fromDto(bookDto)));
-        logger.info("Update book");
-        return result;
+        return bookMapper.toDto(bookDao.updateEntity(bookMapper.fromDto(bookDto)));
     }
 
     @Override

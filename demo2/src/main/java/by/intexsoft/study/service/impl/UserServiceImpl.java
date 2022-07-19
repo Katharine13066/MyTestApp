@@ -83,10 +83,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-        if (userDao.findById(id) == null){
-            logger.warn("No user find by id (delete method)");
-            throw new UserNotFoundByIdException(id);
-        }
         userDao.deleteById(id);
         logger.info("Delete user by id");
     }
@@ -108,10 +104,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserDto update(UserDto userDto) {
-        UserDto result = userMapper.toDto(userDao.updateEntity(userMapper.fromDto(userDto)));
-        logger.info("Update user");
-        return result;
-
+        return userMapper.toDto(userDao.updateEntity(userMapper.fromDto(userDto)));
     }
 
     @Override
